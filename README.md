@@ -15,6 +15,8 @@ npx buildsensei
 
 **Works on Mac, Windows, and Linux.**
 
+**New to BuildSensei?** Run `/sensei` for an interactive menu that guides you to the right command.
+
 <br>
 
 ![BuildSensei Install](assets/terminal.svg)
@@ -202,6 +204,20 @@ Parallel agents analyze your existing code and create documentation in `.plannin
 ```
 
 The codebase docs load automatically during planning. Claude knows your patterns and conventions.
+
+---
+
+## Command Aliases
+
+Quick shortcuts for power users:
+
+| Alias | Full Command |
+|-------|--------------|
+| `/sensei:sp` | `/sensei:plan-phase` |
+| `/sensei:ep` | `/sensei:execute-phase` |
+| `/sensei:prog` | `/sensei:progress` |
+| `/sensei:np` | `/sensei:new-project` |
+| `/sensei:cr` | `/sensei:create-roadmap` |
 
 ---
 

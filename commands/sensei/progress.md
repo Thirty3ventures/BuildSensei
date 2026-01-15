@@ -313,6 +313,36 @@ All {N} phases finished!
 - Handoff file exists → mention it, offer `/sensei:resume-work`
   </step>
 
+<step name="offer_action">
+**Offer quick action selection:**
+
+After displaying the status and "Next Up" section, use AskUserQuestion to let users quickly act:
+
+Based on the route determined above, offer relevant options:
+
+**For Route A (execute plan):**
+- "Execute the next plan" → Provide command
+- "See plan details first" → Read and display PLAN.md objective
+- "Do something else" → Show menu
+
+**For Route B (plan phase):**
+- "Plan this phase" → Provide command
+- "Gather context first" → Suggest /sensei:discuss-phase
+- "Do something else" → Show menu
+
+**For Route C (next phase):**
+- "Plan next phase" → Provide command
+- "Verify current phase first" → Suggest /sensei:verify-work
+- "Do something else" → Show menu
+
+**For Route D (milestone complete):**
+- "Complete milestone" → Provide command
+- "Verify work first" → Suggest /sensei:verify-work
+- "Do something else" → Show menu
+
+This makes progress actionable with one click.
+</step>
+
 </process>
 
 <success_criteria>
@@ -321,6 +351,7 @@ All {N} phases finished!
 - [ ] Current position clear with visual progress
 - [ ] What's next clearly explained
 - [ ] Smart routing: /sensei:execute-plan if plan exists, /sensei:plan-phase if not
-- [ ] User confirms before any action
+- [ ] Interactive action selection offered
+- [ ] User can quickly proceed or explore other options
 - [ ] Seamless handoff to appropriate BuildSensei command
-      </success_criteria>
+</success_criteria>

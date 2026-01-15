@@ -6,6 +6,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-01-15
+
+### Added
+
+**Command Discovery UX**
+- `/sensei` (no args) — Interactive menu that detects project state and suggests next steps
+- `/sensei:sp` — Alias for `/sensei:plan-phase`
+- `/sensei:ep` — Alias for `/sensei:execute-phase`
+- `/sensei:prog` — Alias for `/sensei:progress`
+- `/sensei:np` — Alias for `/sensei:new-project`
+- `/sensei:cr` — Alias for `/sensei:create-roadmap`
+
+**Documentation**
+- Workflow diagram in `/sensei:help` showing typical BuildSensei flow
+- Command aliases table in help and README
+- Interactive action selection in `/sensei:progress`
+
+### Changed
+- `/sensei:progress` now offers quick action buttons after displaying status
+- `/sensei:help` includes visual workflow diagram and aliases section
+
+---
+
 ## [1.0.0] - 2026-01-15
 
 ### Initial Release

@@ -26,6 +26,42 @@ Output ONLY the reference content below. Do NOT add:
 3. `/sensei:plan-phase <number>` - Create detailed plan for first phase
 4. `/sensei:execute-plan <path>` - Execute the plan
 
+**Tip:** Run `/sensei` (no arguments) for an interactive menu.
+
+## Typical Workflow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        SETUP                                 │
+│  new-project → research-project → define-requirements       │
+│                        ↓                                     │
+│                  create-roadmap                              │
+└─────────────────────────────────────────────────────────────┘
+                         ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    PER PHASE                                 │
+│         discuss-phase → plan-phase → execute-phase          │
+│                        ↓                                     │
+│              verify-work → plan-fix (if needed)             │
+└─────────────────────────────────────────────────────────────┘
+                         ↓
+              ┌──────────────────┐
+              │ complete-milestone│
+              └──────────────────┘
+```
+
+## Command Aliases
+
+Quick shortcuts for common commands:
+
+| Alias | Full Command | Description |
+|-------|--------------|-------------|
+| `/sensei:sp` | `/sensei:plan-phase` | Plan a phase |
+| `/sensei:ep` | `/sensei:execute-phase` | Execute a phase |
+| `/sensei:prog` | `/sensei:progress` | Check status |
+| `/sensei:np` | `/sensei:new-project` | Start new project |
+| `/sensei:cr` | `/sensei:create-roadmap` | Create roadmap |
+
 ## Staying Updated
 
 BuildSensei evolves fast. Check for updates periodically:
@@ -37,7 +73,7 @@ BuildSensei evolves fast. Check for updates periodically:
 Shows what changed since your installed version. Update with:
 
 ```bash
-npx buildsensei-cc@latest
+npx buildsensei@latest
 ```
 
 ## Core Workflow
