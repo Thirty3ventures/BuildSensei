@@ -1,0 +1,38 @@
+{
+  "name": "buildsensei",
+  "version": "1.0.0",
+  "description": "Your AI building mentor. A meta-prompting and spec-driven development system that transforms chaotic vibe-coding into structured, working projects.",
+  "bin": {
+    "buildsensei": "bin/install.js"
+  },
+  "files": [
+    "bin",
+    "commands",
+    "buildsensei",
+    "agents"
+  ],
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai",
+    "buildsensei",
+    "vibe-coding",
+    "meta-prompting",
+    "context-engineering",
+    "spec-driven-development",
+    "ai-assisted-development"
+  ],
+  "author": "Thirty3ventures",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thirty3ventures/BuildSensei.git"
+  },
+  "homepage": "https://github.com/Thirty3ventures/BuildSensei#readme",
+  "bugs": {
+    "url": "https://github.com/Thirty3ventures/BuildSensei/issues"
+  },
+  "engines": {
+    "node": ">=16.7.0"
+  }
+}
