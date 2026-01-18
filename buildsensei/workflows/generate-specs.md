@@ -277,6 +277,36 @@ find src -name "*.entity.ts" 2>/dev/null
 find src -name "*.model.ts" -o -name "*.schema.ts" 2>/dev/null
 ```
 
+**Supabase Generated Types:**
+```bash
+# Look for Supabase-generated type files
+cat supabase/types.ts types/supabase.ts database.types.ts src/types/database.ts 2>/dev/null
+# Or grep for the pattern
+grep -rl "export type Database = {" --include="*.ts" 2>/dev/null
+```
+
+**Raw SQL Schema:**
+```bash
+# Check for SQL schema files
+cat schema.sql db/schema.sql supabase/schema.sql 2>/dev/null
+# Check for migrations
+ls supabase/migrations/*.sql migrations/*.sql db/migrations/*.sql 2>/dev/null
+```
+
+**Knex:**
+```bash
+# Check for knex config
+cat knexfile.ts knexfile.js 2>/dev/null
+# Find migrations
+find migrations -name "*.ts" -o -name "*.js" 2>/dev/null | head -20
+```
+
+**MikroORM:**
+```bash
+cat mikro-orm.config.ts 2>/dev/null
+grep -rl "@Entity()" --include="*.ts" src/ 2>/dev/null
+```
+
 ### 2. Parse Schema
 
 For each model/table:

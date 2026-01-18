@@ -240,7 +240,7 @@ cat src/db/schema.ts src/schema.ts 2>/dev/null
 find src -name "*.schema.ts" 2>/dev/null
 ```
 
-**TypeORM:**
+**TypeORM / MikroORM:**
 ```bash
 find src -name "*.entity.ts" 2>/dev/null
 ```
@@ -248,6 +248,24 @@ find src -name "*.entity.ts" 2>/dev/null
 **Mongoose:**
 ```bash
 find src -name "*.model.ts" 2>/dev/null
+```
+
+**Supabase (generated types):**
+```bash
+cat supabase/types.ts database.types.ts types/supabase.ts 2>/dev/null
+grep -rl "export type Database = {" --include="*.ts" 2>/dev/null
+```
+
+**Raw SQL / Supabase migrations:**
+```bash
+cat schema.sql db/schema.sql 2>/dev/null
+ls supabase/migrations/*.sql migrations/*.sql 2>/dev/null
+```
+
+**Knex:**
+```bash
+cat knexfile.ts 2>/dev/null
+find migrations -name "*.ts" 2>/dev/null
 ```
 
 ### Parse Schema
