@@ -332,6 +332,42 @@ Usage: `/sensei:generate-specs` (all specs)
 Usage: `/sensei:generate-specs --api` (API specs only)
 Usage: `/sensei:generate-specs --api --schema` (multiple types)
 
+### Frontend Design
+
+**`/sensei:discuss-design`**
+Guided discovery for frontend design requirements.
+
+- Walks through scope, users, brand, technical, and constraints
+- Captures design context through adaptive questioning
+- Creates `.planning/design/DESIGN-CONTEXT.md`
+- Use before `/sensei:plan-design`
+
+Usage: `/sensei:discuss-design`
+
+**`/sensei:plan-design [component name]`**
+Create frontend design plan with framework and architecture decisions.
+
+- Recommends framework (React/Vue/Svelte) with rationale
+- Defines component architecture using atomic design
+- Plans styling strategy, state management, animations
+- Creates accessibility and performance plans
+- Creates `.planning/design/DESIGN-PLAN.md`
+
+Usage: `/sensei:plan-design`
+Usage: `/sensei:plan-design Button` (single component)
+
+**`/sensei:execute-design [component | category | 'all']`**
+Execute design plan using sensei-designer agent.
+
+- Implements components following design principles
+- Wave-based parallel execution for efficiency
+- Generates component specifications
+- Creates tests and documentation
+
+Usage: `/sensei:execute-design` (all planned components)
+Usage: `/sensei:execute-design Button` (specific component)
+Usage: `/sensei:execute-design ui` (all ui category)
+
 ### Context Management
 
 **`/sensei:extract-knowledge [phase-number]`**
@@ -423,6 +459,9 @@ project/
 │   ├── TESTING.md        # Test setup, patterns
 │   ├── INTEGRATIONS.md   # External services, APIs
 │   └── CONCERNS.md       # Tech debt, known issues
+├── design/               # Frontend design planning
+│   ├── DESIGN-CONTEXT.md # Design requirements & constraints
+│   └── DESIGN-PLAN.md    # Implementation plan
 └── phases/
     ├── 01-foundation/
     │   ├── 01-01-PLAN.md
@@ -506,6 +545,15 @@ Change anytime by editing `.planning/config.json`
 /sensei:generate-specs              # Generate all specs
 /sensei:generate-specs --api        # Just API documentation
 /sensei:generate-specs --components # Just component documentation
+```
+
+**Designing frontend components:**
+
+```
+/sensei:discuss-design              # Capture design requirements
+/sensei:plan-design                 # Plan framework, architecture, styling
+/sensei:execute-design              # Build with sensei-designer agent
+/sensei:execute-design Button       # Build specific component
 ```
 
 ## Getting Help
