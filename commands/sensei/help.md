@@ -316,6 +316,22 @@ List pending todos and select one to work on.
 Usage: `/sensei:check-todos`
 Usage: `/sensei:check-todos api`
 
+### Documentation Generation
+
+**`/sensei:generate-specs [--all | --api | --components | --schema | --env]`**
+Generate specifications from implementation code.
+
+- Analyzes codebase and produces documentation from what's built
+- API routes → OpenAPI/Swagger specs (`docs/spec/api/`)
+- React/Vue components → Component documentation (`docs/spec/components/`)
+- Database models → Schema documentation (`docs/spec/data/`)
+- Environment variables → .env documentation (`docs/spec/env.md`)
+- Run after building features or when documentation is needed
+
+Usage: `/sensei:generate-specs` (all specs)
+Usage: `/sensei:generate-specs --api` (API specs only)
+Usage: `/sensei:generate-specs --api --schema` (multiple types)
+
 ### Context Management
 
 **`/sensei:extract-knowledge [phase-number]`**
@@ -377,6 +393,11 @@ project/
 ├── agents.md             # Project-specific agent definitions
 ├── skills.md             # Reusable patterns discovered
 ├── references.md         # Quick links to docs & APIs
+├── docs/spec/            # Generated specifications
+│   ├── api/              # OpenAPI specs (*.yaml)
+│   ├── components/       # Component documentation
+│   ├── data/             # Schema documentation
+│   └── env.md            # Environment variables
 └── .planning/            # BuildSensei execution artifacts
 ```
 
@@ -477,6 +498,14 @@ Change anytime by editing `.planning/config.json`
 # ... investigation happens, context fills up ...
 /clear
 /sensei:debug                                    # Resume from where you left off
+```
+
+**Generating documentation from code:**
+
+```
+/sensei:generate-specs              # Generate all specs
+/sensei:generate-specs --api        # Just API documentation
+/sensei:generate-specs --components # Just component documentation
 ```
 
 ## Getting Help
