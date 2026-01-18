@@ -81,12 +81,56 @@ The workflow handles:
 - Git commit
 </step>
 
+<step name="generate_prd">
+## Generate PRD.md and Update spec.md
+
+Generate the Product Requirements Document and update spec.md with timeline.
+
+**Reference:** @~/.claude/buildsensei/workflows/generate-context-files.md
+**Template:** @~/.claude/buildsensei/templates/context-files/prd-md.md
+
+1. **Generate PRD.md:**
+   - Executive summary (from PROJECT.md core value)
+   - Problem statement (from PROJECT.md and requirements)
+   - Solution overview (from PROJECT.md)
+   - Feature set by phase (from ROADMAP.md)
+   - Timeline with milestones (from ROADMAP.md)
+   - Success metrics (from requirements)
+   - Technical overview (from PROJECT.md tech choices)
+
+2. **Update spec.md timeline:**
+   - Populate the Timeline table with phases from ROADMAP.md
+   - Map features to phases
+   - All features start as "Pending"
+
+3. **Update CLAUDE.md:**
+   - Note that roadmap is created
+   - Update "Current Sprint Context" to Phase 1
+
+4. **Commit:**
+   ```bash
+   git add PRD.md spec.md CLAUDE.md 2>/dev/null
+   git commit -m "docs(context): Generate PRD and update spec timeline
+
+   - PRD.md created with product overview
+   - spec.md timeline populated with {N} phases
+   - CLAUDE.md updated with roadmap context
+
+   Co-Authored-By: BuildSensei <noreply@buildsensei.dev>"
+   ```
+</step>
+
 <step name="done">
 ```
 Roadmap created:
 - Roadmap: .planning/ROADMAP.md
 - State: .planning/STATE.md
+- PRD: PRD.md (product requirements document)
 - [N] phases defined
+
+Context files updated:
+- spec.md: Timeline populated with phases
+- CLAUDE.md: Roadmap context added
 
 ---
 
@@ -115,6 +159,9 @@ Roadmap created:
 - `.planning/ROADMAP.md`
 - `.planning/STATE.md`
 - `.planning/phases/XX-name/` directories
+- `PRD.md`
+- `spec.md` (updated with timeline)
+- `CLAUDE.md` (updated with roadmap context)
 </output>
 
 <success_criteria>
@@ -127,5 +174,8 @@ Roadmap created:
 - [ ] STATE.md initialized
 - [ ] REQUIREMENTS.md traceability section updated
 - [ ] Phase directories created
+- [ ] PRD.md generated with product overview
+- [ ] spec.md updated with timeline
+- [ ] CLAUDE.md updated with roadmap context
 - [ ] Changes committed
 </success_criteria>

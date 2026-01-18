@@ -85,11 +85,51 @@ Gather requirements through questioning:
 Same output format either way — the difference is source (research vs conversation).
 </step>
 
+<step name="generate_spec">
+## Generate spec.md
+
+Generate the user-facing product specification from the requirements.
+
+**Reference:** @~/.claude/buildsensei/workflows/generate-context-files.md
+**Template:** @~/.claude/buildsensei/templates/context-files/spec-md.md
+
+1. **Read sources:**
+   - PROJECT.md (product vision, user problem)
+   - REQUIREMENTS.md (features, acceptance criteria)
+
+2. **Generate spec.md with:**
+   - Product vision (from PROJECT.md)
+   - User problem (from requirements gathering or PROJECT.md)
+   - Core features with status "Pending" (from v1 requirements)
+   - Each feature with acceptance criteria as checkboxes
+   - Non-goals (from out of scope requirements)
+   - Future considerations (from v2 requirements)
+   - Timeline section (placeholder - populated after create-roadmap)
+
+3. **Update CLAUDE.md:**
+   - Add reference to spec.md in project context
+   - Note that spec.md tracks feature completion
+
+4. **Commit:**
+   ```bash
+   git add spec.md
+   git add CLAUDE.md 2>/dev/null  # If updated
+   git commit -m "docs(context): Generate product specification
+
+   - spec.md created with {N} v1 features
+   - Features mapped from REQUIREMENTS.md
+   - Timeline TBD (pending roadmap creation)
+
+   Co-Authored-By: BuildSensei <noreply@buildsensei.dev>"
+   ```
+</step>
+
 <step name="done">
 ```
 Requirements defined:
 
 - Requirements: .planning/REQUIREMENTS.md
+- Specification: spec.md (product specification)
 - v1 scope: [N] requirements across [M] categories
 - v2 scope: [X] requirements deferred
 - Out of scope: [Y] requirements excluded
@@ -116,6 +156,7 @@ Requirements defined:
 - [ ] User scoped each category (v1/v2/out of scope)
 - [ ] User had opportunity to add missing requirements
 - [ ] REQUIREMENTS.md created with checkable list
-- [ ] Requirements committed to git
+- [ ] spec.md generated with feature list
+- [ ] Requirements and spec committed to git
 - [ ] User knows next step (create-roadmap)
 </success_criteria>

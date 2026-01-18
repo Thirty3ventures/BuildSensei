@@ -316,6 +316,41 @@ List pending todos and select one to work on.
 Usage: `/sensei:check-todos`
 Usage: `/sensei:check-todos api`
 
+### Context Management
+
+**`/sensei:extract-knowledge [phase-number]`**
+Extract knowledge from completed phase and persist to context files.
+
+- Parses SUMMARY.md files for decisions, gotchas, patterns
+- Updates CLAUDE.md with accumulated knowledge
+- Updates spec.md with feature completion status
+- Runs automatically after each phase execution
+- Can be run manually for specific phases
+
+Usage: `/sensei:extract-knowledge` (latest phase)
+Usage: `/sensei:extract-knowledge 3` (specific phase)
+
+**`/sensei:refresh-context [--file <name>]`**
+Regenerate context files from current project state.
+
+- Rebuilds CLAUDE.md, spec.md, PRD.md from project artifacts
+- Preserves user-edited sections when possible
+- Creates backup before regenerating
+- Use when context files are outdated or corrupted
+
+Usage: `/sensei:refresh-context` (all files)
+Usage: `/sensei:refresh-context --file CLAUDE.md` (specific file)
+
+**`/sensei:rollback-context [timestamp]`**
+Restore context files from a previous backup.
+
+- Lists available backups with timestamps
+- Restores selected backup set
+- Creates safety backup before restoring
+
+Usage: `/sensei:rollback-context` (interactive selection)
+Usage: `/sensei:rollback-context 20260118_143022` (specific backup)
+
 ### Utility Commands
 
 **`/sensei:help`**
@@ -333,12 +368,27 @@ Usage: `/sensei:whats-new`
 
 ## Files & Structure
 
+### Project Root (Context Files)
+```
+project/
+├── CLAUDE.md             # AI context - project knowledge for Claude
+├── spec.md               # Product specification - features & status
+├── PRD.md                # Product requirements document
+├── agents.md             # Project-specific agent definitions
+├── skills.md             # Reusable patterns discovered
+├── references.md         # Quick links to docs & APIs
+└── .planning/            # BuildSensei execution artifacts
+```
+
+### Planning Directory
 ```
 .planning/
 ├── PROJECT.md            # Project vision
 ├── ROADMAP.md            # Current phase breakdown
 ├── STATE.md              # Project memory & context
+├── REQUIREMENTS.md       # Scoped requirements
 ├── config.json           # Workflow mode & gates
+├── backups/              # Context file backups
 ├── todos/                # Captured ideas and tasks
 │   ├── pending/          # Todos waiting to be worked on
 │   └── done/             # Completed todos

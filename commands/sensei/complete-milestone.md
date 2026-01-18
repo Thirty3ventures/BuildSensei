@@ -93,14 +93,57 @@ Output: Milestone archived, roadmap reorganized, git tagged.
    - Add "Next Milestone Goals" section
    - Archive previous content in `<details>` (if v1.1+)
 
-6. **Commit and tag:**
+6. **Finalize context files:**
+
+   Complete the context persistence system for this milestone.
+
+   **Reference:** @~/.claude/buildsensei/workflows/generate-context-files.md
+   **Template:** @~/.claude/buildsensei/templates/context-files/agents-md.md
+
+   a. **Generate agents.md** (if not exists):
+      - Determine project type from tech stack and what was built
+      - Include core agents (code, test, docs, devops, review)
+      - Add project-specific agents based on domain
+      - Provide context references and usage examples
+
+   b. **Finalize CLAUDE.md:**
+      - Ensure all phases have been extracted (run extract-knowledge for any missed)
+      - Add milestone completion summary
+      - Update "Current Sprint Context" to show milestone complete
+      - Mark version in metadata
+
+   c. **Finalize spec.md:**
+      - Mark all v1 features as "Complete"
+      - Add "Shipped" date
+      - Update milestone status
+
+   d. **Finalize PRD.md:**
+      - Add "Outcomes" section with what shipped
+      - Update milestone status to "Shipped"
+      - Add actual timeline vs planned
+
+   e. **Commit context files:**
+      ```bash
+      git add CLAUDE.md spec.md PRD.md agents.md skills.md references.md 2>/dev/null
+      git commit -m "docs(context): Finalize context files for v{{version}}
+
+      Milestone v{{version}} complete. All context files finalized:
+      - CLAUDE.md: Full project knowledge
+      - spec.md: All features marked complete
+      - PRD.md: Outcomes documented
+      - agents.md: Project agents defined
+
+      Co-Authored-By: BuildSensei <noreply@buildsensei.dev>"
+      ```
+
+7. **Commit and tag:**
 
    - Stage: MILESTONES.md, PROJECT.md, ROADMAP.md, STATE.md, archive file
    - Commit: `chore: archive v{{version}} milestone`
    - Tag: `git tag -a v{{version}} -m "[milestone summary]"`
    - Ask about pushing tag
 
-7. **Offer next steps:**
+8. **Offer next steps:**
    - Plan next milestone
    - Archive planning
    - Done for now
@@ -112,8 +155,10 @@ Output: Milestone archived, roadmap reorganized, git tagged.
 - Milestone archived to `.planning/milestones/v{{version}}-ROADMAP.md`
 - ROADMAP.md collapsed to one-line entry
 - PROJECT.md updated with current state
+- Context files finalized (CLAUDE.md, spec.md, PRD.md, agents.md)
+- agents.md generated with project-specific agents
 - Git tag v{{version}} created
-- Commit successful
+- All commits successful
 - User knows next steps
   </success_criteria>
 

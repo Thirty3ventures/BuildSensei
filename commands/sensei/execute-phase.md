@@ -87,7 +87,39 @@ Phase: $ARGUMENTS
    - Stage REQUIREMENTS.md if updated: `git add .planning/REQUIREMENTS.md`
    - Commit: `docs({phase}): complete {phase-name} phase`
 
-10. **Offer next steps**
+10. **Extract and persist knowledge**
+    Run knowledge extraction to persist learnings to context files:
+
+    **Reference:** @~/.claude/buildsensei/workflows/extract-knowledge.md
+
+    - Parse all SUMMARY.md files from this phase
+    - Extract decisions, gotchas, patterns, key files
+    - Update CLAUDE.md with new knowledge (append only)
+    - Update spec.md feature statuses (mark completed)
+    - Update skills.md if reusable patterns found
+    - Update references.md if new APIs/docs encountered
+    - Commit context file updates:
+      ```bash
+      git add CLAUDE.md spec.md skills.md references.md 2>/dev/null
+      git commit -m "docs(context): Extract knowledge from Phase {N}
+
+      - {X} decisions documented
+      - {Y} gotchas recorded
+      - {Z} key files tracked
+
+      Co-Authored-By: BuildSensei <noreply@buildsensei.dev>" 2>/dev/null
+      ```
+
+    Report extraction summary:
+    ```
+    Knowledge extracted from Phase {N}:
+    - {X} decisions → CLAUDE.md
+    - {Y} gotchas → CLAUDE.md
+    - {Z} key files → CLAUDE.md
+    - {W} features marked complete → spec.md
+    ```
+
+11. **Offer next steps**
     - Route to next action (see `<offer_next>`)
 </process>
 
@@ -279,5 +311,8 @@ After all plans in phase complete (step 7):
 - [ ] STATE.md reflects phase completion
 - [ ] ROADMAP.md updated
 - [ ] REQUIREMENTS.md updated (phase requirements marked Complete)
+- [ ] Knowledge extracted and persisted to context files
+- [ ] CLAUDE.md updated with phase learnings
+- [ ] spec.md updated with feature completion status
 - [ ] User informed of next steps
 </success_criteria>
